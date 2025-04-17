@@ -6,7 +6,7 @@ info:
     Assistant virtuel expert en gestion de projets et analyse financière 
     avec capacités de tutorat académique avancé.
 servers:
-  - url: https://api.exemple.com
+  - url: https://api.MGP.com
 security:
   - AcademicAuth: []
 paths:
