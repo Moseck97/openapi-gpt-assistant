@@ -12,6 +12,7 @@ security:
 paths:
   /academic-support:
     post:
+      operationId: postAcademicSupport
       summary: Accès au tutorat spécialisé
       requestBody:
         required: true
@@ -26,6 +27,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExpertResponse'
+  /case-studies:
+    post:
+      operationId: postCaseStudies
+      summary: Génération de cas pratiques sectoriels
+      parameters:
+        - in: query
+          name: domain
+          schema:
+            type: string
+            enum: [énergie, santé, tech, transport]
+      responses:
+        '200':
+          description: Cas pratique avec analyse financière
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CaseStudy'
 components:
   securitySchemes:
     AcademicAuth:
@@ -74,6 +92,22 @@ components:
           type: string
         example:
           type: string
+    CaseStudy:
+      type: object
+      properties:
+        scenario:
+          type: string
+        financial_indicators:
+          type: array
+          items:
+            type: string
+            enum: [VAN, TRI, ROI, BCR]
+        methodology:
+          type: string
+        common_errors:
+          type: array
+          items:
+            type: string
     Reference:
       type: object
       properties:
